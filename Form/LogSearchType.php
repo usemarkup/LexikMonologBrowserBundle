@@ -2,15 +2,16 @@
 
 namespace Lexik\Bundle\MonologBrowserBundle\Form;
 
+use Doctrine\DBAL\Query\QueryBuilder;
+use Doctrine\DBAL\Types\Type;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\OptionsResolver\Options;
-
-use Doctrine\DBAL\Types\Type;
-use Doctrine\DBAL\Connection;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * @author Jeremy Barthe <j.barthe@lexik.fr>
@@ -23,25 +24,29 @@ class LogSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('term', 'search', array(
+            ->add('term', SearchType::class, [
                 'required' => false,
-            ))
-            ->add('level', 'choice', array(
+            ]
+            )
+            ->add('level', ChoiceType::class, [
                 'choices'     => $options['log_levels'],
                 'required'    => false,
-            ))
-            ->add('date_from', 'datetime', array(
+            ]
+            )
+            ->add('date_from', DateTimeType::class, [
                 'date_widget' => 'single_text',
                 'date_format' => 'MM/dd/yyyy',
                 'time_widget' => 'text',
                 'required'    => false,
-            ))
-            ->add('date_to', 'datetime', array(
+            ]
+            )
+            ->add('date_to', DateTimeType::class, [
                 'date_widget' => 'single_text',
                 'date_format' => 'MM/dd/yyyy',
                 'time_widget' => 'text',
                 'required'    => false,
-            ))
+            ]
+            )
         ;
 
         $qb = $options['query_builder'];
@@ -79,27 +84,34 @@ class LogSearchType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver
-            ->setRequired(array(
+            ->setRequired(
+                [
                 'query_builder',
-            ))
-            ->setDefaults(array(
-                'log_levels'      => array(),
+                ]
+            )
+            ->setDefaults(
+                [
+                'log_levels'      => [],
                 'csrf_protection' => false,
-            ))
-            ->setAllowedTypes(array(
-                'log_levels'    => 'array',
-                'query_builder' => '\Doctrine\DBAL\Query\QueryBuilder',
-            ))
-        ;
+                ]
+            )
+            ->setAllowedTypes(
+                'log_levels',
+                'array'
+            )
+            ->setAllowedTypes(
+                'query_builder',
+                QueryBuilder::class
+            );
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'search';
     }

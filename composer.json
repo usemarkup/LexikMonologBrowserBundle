@@ -15,15 +15,17 @@
             "email": "dev@lexik.fr"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
-        "php": ">=5.3.2",
-        "symfony/framework-bundle": "~2.1",
+        "php": ">=5.6",
+        "symfony/framework-bundle": "^2.8|^3",
         "knplabs/knp-paginator-bundle": ">=2.3"
     },
     "require-dev": {
         "monolog/monolog": "*",
-        "doctrine/dbal": "*"
+        "doctrine/dbal": "*",
+        "symfony/console": "^2.8|^3",
+        "symfony/form": "^2.8|^3",
+        "symfony/options-resolver": "^2.8|^3"
     },
     "autoload": {
         "psr-0": { "Lexik\\Bundle\\MonologBrowserBundle": "" }
