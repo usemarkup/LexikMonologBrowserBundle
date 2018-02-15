@@ -54,7 +54,7 @@ class LogSearchType extends AbstractType
             return Type::getType('datetime')->convertToDatabaseValue($date, $qb->getConnection()->getDatabasePlatform());
         };
 
-        $builder->addEventListener(FormEvents::POST_BIND, function(FormEvent $event) use ($qb, $convertDateToDatabaseValue) {
+        $builder->addEventListener(FormEvents::POST_SUBMIT, function(FormEvent $event) use ($qb, $convertDateToDatabaseValue) {
             $data = $event->getData();
 
             if (null !== $data['term']) {
