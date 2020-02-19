@@ -23,10 +23,10 @@
     "require-dev": {
         "monolog/monolog": "^1.24",
         "doctrine/dbal": "*",
-        "symfony/console": "^2.8|^3",
-        "symfony/form": "^2.8|^3",
+        "symfony/console": "^4",
+        "symfony/form": "^4",
         "phpunit/phpunit": "^7",
-        "symfony/options-resolver": "^2.8|^3",
+        "symfony/options-resolver": "^4",
         "phpstan/phpstan-shim": "^0.11"
     },
     "autoload": {
