@@ -32,7 +32,7 @@ class DoctrineDBALHandler extends AbstractProcessingHandler
      * @param Connection $connection
      * @param string     $tableName
      * @param int        $level
-     * @param string     $bubble
+     * @param bool     $bubble
      */
     public function __construct(Connection $connection, $tableName, $level = Logger::DEBUG, $bubble = true)
     {
