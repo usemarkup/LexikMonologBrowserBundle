@@ -2,7 +2,7 @@
 
 namespace Lexik\Bundle\MonologBrowserBundle\Model;
 
-use Doctrine\DBAL\Driver\Connection;
+use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\DBAL\Schema\SchemaDiff;
 use Doctrine\DBAL\Schema\Comparator;

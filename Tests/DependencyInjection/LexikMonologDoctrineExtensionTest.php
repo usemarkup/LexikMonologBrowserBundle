@@ -2,12 +2,12 @@
 
 namespace Lexik\Bundle\MonologBrowserBundle\Tests\DependencyInjection;
 
-use Symfony\Component\Yaml\Parser;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 use Lexik\Bundle\MonologBrowserBundle\DependencyInjection\LexikMonologBrowserExtension;
 
-class LexikMonologBrowserExtensionTest extends \PHPUnit_Framework_TestCase
+class LexikMonologBrowserExtensionTest extends TestCase
 {
     public function testConfigLoad()
     {

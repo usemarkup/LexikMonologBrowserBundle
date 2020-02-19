@@ -2,7 +2,7 @@
 
 namespace Lexik\Bundle\MonologBrowserBundle\Model;
 
-use Doctrine\DBAL\Driver\Connection;
+use Doctrine\DBAL\Connection;
 
 use Lexik\Bundle\MonologBrowserBundle\Model\Log;
 
